@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    binding.pry
+    @sorted_stations = Station.new(zip_code).closest_stations
   end
 end
