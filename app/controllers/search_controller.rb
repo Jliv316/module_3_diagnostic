@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @sorted_stations = Station.new(zip_code).closest_stations
+    
+    @sorted_stations = Nrel.new(params[:q]).stations
   end
 end
