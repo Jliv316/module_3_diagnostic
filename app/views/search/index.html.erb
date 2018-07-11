@@ -1,4 +1,8 @@
 <p>10 closest stations within a 6 mile radius</p>
 <% @sorted_stations.each do |station| %>
-<%= station.name %>
+  <h1>station name: <%= station.station_name %></h1>
+  <p>street address: <%= station.street_address %></p>
+  <p>fuel types: <%= station.fuel_types %></p>
+  <p>distance: <%= station.distance %></p>
+  <p>access_times: <%= station.access_times %></p>
 <%end%>

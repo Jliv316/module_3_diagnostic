@@ -10,16 +10,12 @@ class ClosestStationsService
   end
 
   private
-  def conn
-    Faraday.new("https://developer.nrel.gov/api")
-  end
-
   def response
-    conn.get "/alt-fuel-stations/v1.json?limit=10&radius=6.0&fuel_type=LPG,ELEC&location=#{@zip_code}&api_key=ihuEfN4uxkeLr8FbAar3h3xSOAVZUsbpK8Th1Qo4"
+    Faraday.get "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?limit=10&radius=6.0&fuel_type=LPG,ELEC&location=#{@zip_code}&api_key=#{ENV['NREL_API_KEY']}"
   end
 
   def data
-    binding.pry
     json = JSON.parse(response.body, symbolize_names: true)
+    return json[:fuel_stations]
   end
 end
