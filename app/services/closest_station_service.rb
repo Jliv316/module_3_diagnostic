@@ -13,7 +13,8 @@ class ClosestStationService
   end
 
   def response
-    conn.get "/alt-fuel-stations/v1.json?limit=1&api_key=YOUR_KEY_HERE" do |request|
+    api_key = ENV[NREL_API_KEY]
+    conn.get "/alt-fuel-stations/v1.json?limit=1&api_key=#{api_key}" do |request|
     end
   end
 
